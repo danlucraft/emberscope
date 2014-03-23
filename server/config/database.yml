@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  host:    localhost
+  username: danlucraft
+  database: emberscope-development
+
+

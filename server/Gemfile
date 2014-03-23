@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+
+gem "sinatra"
+gem "activerecord"
+gem "active_model_serializers", "~> 0.8.0"
+gem "unicorn"
+gem "pg"
+gem 'rack-cors', :require => 'rack/cors'

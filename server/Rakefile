@@ -1,0 +1,2 @@
+$:.push(File.expand_path("..", __FILE__))
+load 'lib/tasks/database.rake'

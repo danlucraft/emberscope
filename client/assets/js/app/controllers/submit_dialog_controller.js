@@ -23,12 +23,13 @@ App.SubmitDialogController = Ember.ObjectController.extend({
       }
 
       if (done) {
-        this.store.createRecord("post", {
+        var post = this.store.createRecord("post", {
           title:    model.get("title"),
           url:      model.get("url"),
           username: model.get("username"),
           text:     model.get("text")
         });
+        post.save();
         this.send("close");
       }
     },
