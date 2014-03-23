@@ -1,0 +1,18 @@
+
+{{#modal-dialog heading="Signup"}}
+  <div class="w-form submission-form-wrapper">
+    <form name="wf-form-submit">
+      {{errors.username}}
+      {{input value=username class="w-input" placeholder="Username"}}
+      {{errors.email}}
+      {{input value=email class="w-input" placeholder="Email"}}
+      {{errors.password}}
+      {{input type="password" value=password class="w-input" placeholder="Password"}}
+      {{errors.repeatedPassword}}
+      {{input type="password" value=repeatedPassword class="w-input" placeholder="Repeat Password"}}
+      <input class="w-button modal-button" type="submit" value="Signup" {{action "submit"}}></input> 
+      <input class="w-button modal-button cancel" type="submit" value="Cancel" {{action "close"}}></input>
+    </form>
+  </div>
+{{/modal-dialog}}
+

@@ -76,6 +76,7 @@ module Emberscope
       else
         params = {"user" => {}}
       end
+      params["user"] ||= {}
       attributes = {
         uuid:     params["user"]["uuid"],
         username: params["user"]["username"],
@@ -85,9 +86,12 @@ module Emberscope
       if user.save
         status 200
         content_type :json
-        UserSerializer.new(user).to_json
+        hash = UserSerializer.new(user).as_json
+        hash["token"] = user.new_token
+        hash.to_json
       else
         status 409
+        content_type :json
         user.errors.to_json
       end
     end
