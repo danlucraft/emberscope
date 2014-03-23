@@ -6,6 +6,7 @@ App.Post = DS.Model.extend({
   count:        DS.attr("number"),
   commentCount: DS.attr("number"),
   date:         DS.attr("date"),
+  //votes:        DS.hasMany("vote"),
 
   domain: function() {
     return "youtube.com";
