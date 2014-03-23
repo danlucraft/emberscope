@@ -4,6 +4,7 @@ App.ApplicationRoute = Em.Route.extend({
     var token = localStorage.token;
     if (token) {
       console.log("token: ", token);
+      this.controllerFor("application").loginWithToken(token);
     } else {
       console.log("no token");
       return null;
