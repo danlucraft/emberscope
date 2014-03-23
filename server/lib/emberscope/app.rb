@@ -49,12 +49,21 @@ module Emberscope
     end
 
     get "/users" do
-      if users = User.all
-        status 200
-        content_type :json
-        ActiveModel::ArraySerializer.new(users, root: "users").to_json
+      if token = params[:token]
+        if user = User.find_by_token(token)
+          status 200
+          UserSerializer.new(user).to_json
+        else
+          status 404
+        end
       else
-        status 404
+        if users = User.all
+          status 200
+          content_type :json
+          ActiveModel::ArraySerializer.new(users, root: "users").to_json
+        else
+          status 404
+        end
       end
     end
 
@@ -89,13 +98,13 @@ module Emberscope
       end
     end
 
-    post "/login" do
+    post "/tokens" do
       username_or_email = params[:identifier]
       password          = params[:password]
       if user = User.find_by_username_or_email(username_or_email)
-        if user.authenticate(password)
+        if user.authenticate_password(password)
           status 200
-          UserSerializer.new(user).to_json
+          {token: user.new_token}.to_json
         else
           status 404
         end
