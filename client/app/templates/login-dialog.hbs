@@ -1,0 +1,15 @@
+
+{{#modal-dialog heading="Login"}}
+  <div class="w-form submission-form-wrapper">
+    <form name="wf-form-submit">
+      {{#if error}}
+        Couldn&#39t find a user with that username/email and password.
+      {{/if}}
+      {{input value=identifier class="w-input" placeholder="Username or Email"}}
+      {{input type="password" value=password class="w-input" placeholder="Password"}}
+      <input class="w-button modal-button" type="submit" value="Login" {{action "submit"}}></input> 
+      <input class="w-button modal-button cancel" type="submit" value="Cancel" {{action "close"}}></input>
+    </form>
+  </div>
+{{/modal-dialog}}
+

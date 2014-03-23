@@ -32,6 +32,7 @@ module Emberscope
       if attributes.values.all?
         attributes[:text] = data["text"]
         status 200
+        content_type :json
         PostSerializer.new(Post.create(attributes)).to_json
       else
         status 409
@@ -52,7 +53,8 @@ module Emberscope
       if token = params[:token]
         if user = User.find_by_token(token)
           status 200
-          UserSerializer.new(user).to_json
+          content_type :json
+          ActiveModel::ArraySerializer.new([user], root: "users").to_json
         else
           status 404
         end
@@ -82,6 +84,7 @@ module Emberscope
       user = User.new_with_password(attributes, params["user"]["password"])
       if user.save
         status 200
+        content_type :json
         UserSerializer.new(user).to_json
       else
         status 409
@@ -104,6 +107,7 @@ module Emberscope
       if user = User.find_by_username_or_email(username_or_email)
         if user.authenticate_password(password)
           status 200
+          content_type :json
           {token: user.new_token}.to_json
         else
           status 404

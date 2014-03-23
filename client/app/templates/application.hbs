@@ -1,17 +1,20 @@
-
-  <div class="header">
-    <div class="w-container">
-      <div class="w-row">
-        <div class="w-col w-col-6 w-col-small-6">
-          <h1 class="logo">Emberscope</h1>
-        </div>
-        <div class="w-col w-col-6 w-col-small-6 nav-bar">
+<div class="header">
+  <div class="w-container">
+    <div class="w-row">
+      <div class="w-col w-col-6 w-col-small-6">
+        <h1 class="logo">Emberscope</h1>
+      </div>
+      <div class="w-col w-col-6 w-col-small-6 nav-bar">
+        {{#if loggedInUser}}
           <a class="nav" {{action "openSubmitModal"}}>Submit</a>
-          <a class="nav" href="#">About</a>
-        </div>
+        {{else}}
+          <a class="nav" {{action "openLoginModal"}}>Login</a>
+        {{/if}}
+        <a class="nav" href="#">About</a>
       </div>
     </div>
   </div>
+</div>
 
 {{outlet}}
 {{outlet modal}}

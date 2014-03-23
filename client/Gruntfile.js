@@ -16,10 +16,10 @@ module.exports = function(grunt) {
     emberTemplates: {
       compile: {
         options: {
-          templateBasePath: /assets\/js\/app\/templates\//
+          templateBasePath: /app\/templates\//
         },
         files: {
-          'assets/js/templates.js': 'assets/js/app/templates/**/*.hbs'
+          'assets/js/templates.js': 'app/templates/**/*.hbs'
         }
       }
     },
@@ -55,13 +55,15 @@ module.exports = function(grunt) {
       },
 
       emberTemplates: {
-        files: 'assets/js/app/templates/**/*.hbs',
+        files: 'app/templates/**/*.hbs',
         tasks: ['emberTemplates']
       },
 
       concat: {
         files: [
           'assets/js/**/*.js', 
+          'assets/js/**/*.hbs', 
+          'app/**/*.js', 
           '!assets/js/app.js', 
           '!assets/js/libs.js', 
           '!assets/js/templates.js'],
