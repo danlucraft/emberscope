@@ -25,12 +25,14 @@ GEM
     kgio (2.8.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    pbkdf2-ruby (0.2.1)
     pg (0.17.1)
     rack (1.5.2)
     rack-cors (0.2.9)
     rack-protection (1.5.2)
       rack
     raindrops (0.12.0)
+    rake (10.1.1)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -50,7 +52,9 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.0)
   activerecord
+  pbkdf2-ruby
   pg
   rack-cors
+  rake
   sinatra
   unicorn

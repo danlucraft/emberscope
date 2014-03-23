@@ -1,12 +1,14 @@
+
 require 'yaml'
 require 'sinatra'
 require 'active_record'
 require 'active_model_serializers'
 require 'rack/cors'
+require 'pbkdf2'
 
 require 'emberscope/app'
 require 'emberscope/models/post'
-
+require 'emberscope/models/user'
 
 module Emberscope
   def self.init
