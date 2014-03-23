@@ -21,7 +21,7 @@ App.LoginDialogController = Ember.ObjectController.extend({
 
     close: function() {
       this.set("error", false);
-      return this.send('closeLoginModal');
+      return this.send('closeModal');
     }
   }
 });

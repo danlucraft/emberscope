@@ -11,36 +11,20 @@ App.ApplicationRoute = Em.Route.extend({
   },
 
   actions: {
-    openLoginModal: function() {
-      this.controllerFor("login-dialog").set("model", Em.Object.create({}));
+    openModal: function(name) {
+      this.controllerFor(name).set("model", Em.Object.create({}));
 
-      return this.render("login-dialog", {
+      return this.render(name, {
         into: 'application',
         outlet: 'modal'
       });
     },
 
-    closeLoginModal: function() {
+    closeModal: function() {
       return this.disconnectOutlet({
         outlet: 'modal',
         parentView: 'application'
       });
     },
-
-    openSubmitModal: function() {
-      this.controllerFor("submit-dialog").set("model", Em.Object.create({}));
-
-      return this.render("submit-dialog", {
-        into: 'application',
-        outlet: 'modal'
-      });
-    },
-
-    closeSubmitModal: function() {
-      return this.disconnectOutlet({
-        outlet: 'modal',
-        parentView: 'application'
-      });
-    }
   }
 });

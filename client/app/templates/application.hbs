@@ -6,9 +6,9 @@
       </div>
       <div class="w-col w-col-6 w-col-small-6 nav-bar">
         {{#if loggedInUser}}
-          <a class="nav" {{action "openSubmitModal"}}>Submit</a>
+          <a class="nav" {{action "openModal" "submit-dialog"}}>Submit</a>
         {{else}}
-          <a class="nav" {{action "openLoginModal"}}>Login</a>
+          <a class="nav" {{action "openModal" "login-dialog"}}>Login</a>
         {{/if}}
         <a class="nav" href="#">About</a>
       </div>

@@ -35,7 +35,7 @@ App.SubmitDialogController = Ember.ObjectController.extend({
     },
 
     close: function() {
-      return this.send('closeSubmitModal');
+      return this.send('closeModal');
     }
   }
 });
