@@ -1,0 +1,5 @@
+
+button.modal-button:disabled {
+  color: #555;
+  background-color: #AAA;
+}

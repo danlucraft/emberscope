@@ -2224,8 +2224,23 @@ Webflow.define('ix', function ($, _) {
 
       if (type == 'scroll') {
         anchors.push({ el: el, trigger: trigger, state: { active: false } });
+
+        // Convert offsets to numbers
+        trigger._offsetTop = convert(trigger.offsetTop);
+        trigger._offsetBot = convert(trigger.offsetBot);
       }
     });
+  }
+
+  function convert(offset) {
+    if (!offset) return 0;
+    offset = offset + '';
+    var result = parseInt(offset, 10);
+    if (offset.indexOf('%') > 0) {
+      result = result / 100;
+      if (result >= 1) result = 0.999;
+    }
+    return result;
   }
 
   function teardown(i, el) {
@@ -2245,9 +2260,8 @@ Webflow.define('ix', function ($, _) {
       var state = anchor.state;
       var top = el.offset().top;
       var height = el.outerHeight();
-      var offsets = trigger.offsets || [0,0];
-      var offsetTop = offsets[0] || 0;
-      var offsetBot = offsets[1] || 0;
+      var offsetTop = trigger._offsetTop || 0;
+      var offsetBot = trigger._offsetBot || 0;
       if (offsetTop < 1 && offsetTop > 0) offsetTop *= viewHeight;
       if (offsetBot < 1 && offsetBot > 0) offsetBot *= viewHeight;
       var active = (top + height - offsetTop >= viewTop && top + offsetBot <= viewTop + viewHeight);

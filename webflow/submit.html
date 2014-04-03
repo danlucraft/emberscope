@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Sat Mar 22 2014 15:31:24 GMT+0000 (UTC) -->
+<!-- Last Published: Thu Apr 03 2014 15:02:54 GMT+0000 (UTC) -->
 <html data-wf-site="532d5c854d4c282469000241">
 <head>
   <meta charset="utf-8">
   <title>Emberscope - Submit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Webflow">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/webflow.css">
   <link rel="stylesheet" type="text/css" href="css/emberscope.webflow.css">
@@ -71,6 +72,22 @@
           <textarea class="w-input" placeholder="Discussion" name="text" data-name="text"></textarea>
           <input class="w-button modal-button" type="submit" value="Submit" data-wait="Please wait..."></input>
           <input class="w-button modal-button cancel" type="submit" value="Cancel" data-wait="Please wait..."></input>
+        </form>
+        <div class="w-form-done">
+          <p>Thank you! Your submission has been received!</p>
+        </div>
+        <div class="w-form-fail">
+          <p>Oops! Something went wrong while submitting the form :(</p>
+        </div>
+      </div>
+      <div class="w-form submission-form-wrapper inactive">
+        <form name="wf-form-submit" data-name="Submit">
+          <input class="w-input" type="text" placeholder="Title" name="title" data-name="title"></input>
+          <input class="w-input" type="email" placeholder="Url" name="url" data-name="url"></input>
+          <input class="w-input" type="email" placeholder="Your username" name="username" data-name="username" required="required"></input>
+          <textarea class="w-input" placeholder="Discussion" name="text" data-name="text"></textarea>
+          <input class="w-button modal-button inactive" type="submit" value="Submit" data-wait="Please wait..."></input>
+          <input class="w-button modal-button inactive" type="submit" value="Cancel" data-wait="Please wait..."></input>
         </form>
         <div class="w-form-done">
           <p>Thank you! Your submission has been received!</p>

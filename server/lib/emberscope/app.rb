@@ -106,6 +106,7 @@ module Emberscope
     end
 
     post "/tokens" do
+      sleep 1
       username_or_email = params[:identifier]
       password          = params[:password]
       if user = User.find_by_username_or_email(username_or_email)

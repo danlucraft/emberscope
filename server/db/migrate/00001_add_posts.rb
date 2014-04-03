@@ -2,6 +2,7 @@ class AddPosts < ActiveRecord::Migration
   def up
     create_table :posts do |t|
       t.string  :uuid
+      t.integer :user_id
       t.string  :title
       t.string  :url
       t.text    :text

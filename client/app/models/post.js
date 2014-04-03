@@ -1,7 +1,7 @@
 
 App.Post = DS.Model.extend({
   title:        DS.attr("string"),
-  username:     DS.attr("string"),
+  user:         DS.belongsTo("user"),
   url:          DS.attr("string"),
   count:        DS.attr("number"),
   commentCount: DS.attr("number"),
@@ -14,5 +14,5 @@ App.Post = DS.Model.extend({
 
   dateString: function() {
     return "1000 years ago";
-  }.property("date")
+  }.property("date"),
 });

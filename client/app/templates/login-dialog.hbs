@@ -7,8 +7,12 @@
       {{/if}}
       {{input value=identifier class="w-input" placeholder="Username or Email"}}
       {{input type="password" value=password class="w-input" placeholder="Password"}}
-      <input class="w-button modal-button" type="submit" value="Login" {{action "submit"}}></input> 
-      <input class="w-button modal-button cancel" type="submit" value="Cancel" {{action "close"}}></input>
+      <button class="w-button modal-button" type="submit" {{action "submit"}} {{bindAttr disabled=processing}}>
+        Login
+      </button> 
+      <button class="w-button modal-button cancel" type="submit" value="Cancel" {{action "close"}} {{bindAttr disabled=processing}}>
+        Cancel
+      </button>
     </form>
   </div>
 {{/modal-dialog}}

@@ -61,6 +61,7 @@ module.exports = function(grunt) {
 
       concat: {
         files: [
+          'assets/css/*.css',
           'assets/js/**/*.js', 
           'assets/js/**/*.hbs', 
           'app/**/*.js', 

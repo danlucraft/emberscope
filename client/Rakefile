@@ -1,0 +1,5 @@
+task :copy_webflow_style do
+  cp "../webflow/css/normalize.css", "assets/css/001_normalize.css"
+  cp "../webflow/css/webflow.css", "assets/css/002_webflow.css"
+  cp "../webflow/css/emberscope.webflow.css", "assets/css/003_emberscope.webflow.css"
+end
