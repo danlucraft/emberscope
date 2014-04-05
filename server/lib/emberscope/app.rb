@@ -46,6 +46,22 @@ module Emberscope
       end
     end
 
+    post "/posts/:post_uuid/vote" do |post_uuid|
+      status 200
+      if current_user and post = Post.where(uuid: post_uuid).first
+        current_user.upvote(post)
+      end
+      nil
+    end
+
+    delete "/posts/:post_uuid/vote" do |post_uuid|
+      status 200
+      if current_user and post = Post.where(uuid: post_uuid).first
+        current_user.downvote(post)
+      end
+      nil
+    end
+
     get "/users/:id" do
       if user = User.where(uuid: params[:id]).first
         status 200
@@ -126,18 +142,6 @@ module Emberscope
         end
       else
         status 404
-      end
-    end
-
-    post "/votes" do
-      user_uuid = params["user"]
-      post_uuid = params["post"]
-      Vote.for(post_uuid, user_uuid)
-    end
-
-    delete "/votes/:id" do |id|
-      if vote = Vote.find_by_client_side_id(id)
-        vote.destroy
       end
     end
 

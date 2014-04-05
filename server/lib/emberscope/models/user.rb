@@ -39,6 +39,14 @@ class User < ActiveRecord::Base
     self.class.encryptor
   end
 
+  def upvote(post)
+    Vote.create!(post_id: post.id, user_id: self.id)
+  end
+
+  def downvote(post)
+    votes.where(post_id: post.id).each(&:destroy)
+  end
+
   def self.encryptor
     ActiveSupport::MessageEncryptor.new(SECRET)
   end

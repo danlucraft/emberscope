@@ -11,9 +11,9 @@ App.Vote = DS.Model.extend({
 App.Vote.reopenClass({
   vote: function(user, post) {
     $.ajax({
-      url: "http://localhost:8080/votes",
-      type: "POST",
-      data: {post: post.get("id"), user: user.get("id")},
+      url:     "http://localhost:8080/posts/" + post.get("id") + "/vote",
+      headers: { "X-AUTHENTICATION-TOKEN": localStorage.token },
+      type:    "POST",
     }).done(function() {
       console.log("voted");
     });
@@ -21,8 +21,9 @@ App.Vote.reopenClass({
 
   unvote: function(user, post) {
     $.ajax({
-      url: "http://localhost:8080/votes/" + post.get("id") + "-" + user.get("id"),
-      type: "DELETE"
+      url:     "http://localhost:8080/posts/" + post.get("id") + "/vote",
+      headers: { "X-AUTHENTICATION-TOKEN": localStorage.token },
+      type:    "DELETE"
     }).done(function() {
       console.log("unvoted");
     });
