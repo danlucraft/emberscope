@@ -5,38 +5,7 @@
     <ul class="posts">
 
       {{#each post in controller}}
-
-        <li class="w-clearfix post">
-          <a style="cursor:pointer" class="w-inline-block vote-buttons" {{action "upVote" post.id}}>
-            <div class="up-button">⬆</div>
-          </a>
-
-          <div class="count">{{post.count}}</div>
-
-          <div class="post-title">
-            <a class="title" target="_blank" {{bind-attr href="post.url"}}>
-              {{post.title}}
-            </a>
-          </div>
-
-          <a class="w-inline-block comments-box" href="#">
-            <img class="pic" src="assets/images/1395503154_spechbubble_2.png" width="30">
-            <div class="comment-count">{{post.commentCount}}</div>
-          </a>
-
-          <div class="w-clearfix post-info">
-            <a class="post-user" href="#">
-              {{post.username}}
-            </a>
-            <a class="domain" href="#">
-              {{post.domain}}
-            </a>
-            <div class="post-date">
-              {{post.dateString}}
-            </div>
-          </div>
-        </li>
-
+        {{post-entry store=store post=post viewingUser=loggedInUser}}
       {{/each}}
 
     </ul>

@@ -3,5 +3,5 @@ App.User = DS.Model.extend({
   email:    DS.attr("string"),
   password: DS.attr("string"),
 
-  posts:    DS.hasMany("post"),
+  votes:    DS.hasMany("vote"),
 });

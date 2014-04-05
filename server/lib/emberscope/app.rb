@@ -2,11 +2,18 @@
 module Emberscope
   class App < Sinatra::Application
 
+    def current_user
+      token = request.env["HTTP_X_AUTHENTICATION_TOKEN"]
+      if token
+        User.find_by_token(token)
+      end
+    end
+
     get "/posts/:id" do
       if post = Post.where(uuid: params[:uuid]).first
         status 200
         content_type :json
-        PostSerializer.new(post).to_json
+        PostSerializer.new(post, scope: current_user).to_json
       else
         status 404
       end
@@ -16,7 +23,7 @@ module Emberscope
       if posts = Post.all
         status 200
         content_type :json
-        ActiveModel::ArraySerializer.new(posts, root: "posts").to_json
+        ActiveModel::ArraySerializer.new(posts, root: "posts", scope: current_user).to_json
       else
         status 404
       end
@@ -33,7 +40,7 @@ module Emberscope
         attributes[:text] = data["text"]
         status 200
         content_type :json
-        PostSerializer.new(Post.create(attributes)).to_json
+        PostSerializer.new(Post.create(attributes), scope: current_user).to_json
       else
         status 409
       end
@@ -119,6 +126,18 @@ module Emberscope
         end
       else
         status 404
+      end
+    end
+
+    post "/votes" do
+      user_uuid = params["user"]
+      post_uuid = params["post"]
+      Vote.for(post_uuid, user_uuid)
+    end
+
+    delete "/votes/:id" do |id|
+      if vote = Vote.find_by_client_side_id(id)
+        vote.destroy
       end
     end
 

@@ -2189,7 +2189,6 @@ Webflow.define('ix', function ($, _) {
     var triggers = config[id];
     if (!triggers) return;
     var state = store[id] || (store[id] = {});
-    unique++;
 
     _.each(triggers, function (trigger) {
       var type = trigger.type;
@@ -2200,11 +2199,13 @@ Webflow.define('ix', function ($, _) {
       }
 
       if (type == 'click') {
-        var stateKey = 'click:';
-        if (trigger.descend) stateKey += unique + ':';
-        stateKey += trigger.selector;
+        var stateKey = 'click:' + unique++;
+        if (trigger.descend) stateKey += ':descend';
+        if (trigger.selector) stateKey += ':' + trigger.selector;
 
-        el.on('click' + namespace, function () {
+        el.on('click' + namespace, function (evt) {
+          if (el.attr('href') === '#') evt.preventDefault();
+
           run(trigger, el, { group: state[stateKey] ? 'B' : 'A' });
           if (stepsB) state[stateKey] = !state[stateKey];
         });
@@ -2214,7 +2215,7 @@ Webflow.define('ix', function ($, _) {
       if (touch) return;
 
       if (type == 'hover') {
-        el.on('mouseover' + namespace, function () {
+        el.on('mouseenter' + namespace, function () {
           run(trigger, el, { group: 'A' });
         });
         el.on('mouseleave' + namespace, function () {

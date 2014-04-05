@@ -125,10 +125,13 @@ p {
   margin-left: 0px;
   padding-top: 0px;
   border-radius: 31px;
-  color: rgba(82, 140, 76, 0.81);
+  color: rgba(161, 161, 161, 0.81);
   font-size: 24px;
   line-height: 20px;
   letter-spacing: 0px;
+}
+.up-button.voted {
+  color: rgba(88, 163, 80, 0.81);
 }
 .title {
   margin-left: 0px;

@@ -9,6 +9,7 @@ require 'pbkdf2'
 require 'emberscope/app'
 require 'emberscope/models/post'
 require 'emberscope/models/user'
+require 'emberscope/models/vote'
 
 module Emberscope
   def self.init

@@ -1,0 +1,33 @@
+
+
+<li class="w-clearfix post">
+  <a style="cursor:pointer" class="w-inline-block vote-buttons" {{action "changeVote" post.id}}>
+    <div {{bind-attr class=":up-button post.hasVoted:voted"}}>⬆</div>
+  </a>
+
+  <div class="count">{{post.voteCount}}</div>
+
+  <div class="post-title">
+    <a class="title" target="_blank" {{bind-attr href="post.url"}}>
+      {{post.title}}
+    </a>
+  </div>
+
+  <a class="w-inline-block comments-box" href="#">
+    <img class="pic" src="assets/images/1395503154_spechbubble_2.png" width="30">
+    <div class="comment-count">{{post.commentCount}}</div>
+  </a>
+
+  <div class="w-clearfix post-info">
+    <a class="post-user" href="#">
+      {{post.username}}
+    </a>
+    <a class="domain" href="#">
+      {{post.domain}}
+    </a>
+    <div class="post-date">
+      {{post.dateString}}
+    </div>
+  </div>
+</li>
+

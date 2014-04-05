@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_create :set_uuid
+  has_many :votes
 
   validates_presence_of :username
   validates_presence_of :email
