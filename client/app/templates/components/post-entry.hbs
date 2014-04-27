@@ -19,9 +19,9 @@
   {{/link-to}}
 
   <div class="w-clearfix post-info">
-    <a class="post-user" href="#">
+    {{#link-to "user" post.user classNames="post-user"}}
       {{post.user.username}}
-    </a>
+    {{/link-to}}
 
     <a class="domain">
       {{post.domain}}
