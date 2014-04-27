@@ -17,16 +17,10 @@ App.SubmitDialogController = Ember.ObjectController.extend({
         done = false;
       }
 
-      if (!model.get("username")) {
-        this.set("usernameError", "Must have a username");
-        done = false;
-      }
-
       if (done) {
         var post = this.store.createRecord("post", {
           title:    model.get("title"),
           url:      model.get("url"),
-          username: model.get("username"),
           text:     model.get("text")
         });
         post.save();

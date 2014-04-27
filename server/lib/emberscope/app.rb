@@ -30,19 +30,25 @@ module Emberscope
     end
 
     post "/posts" do
-      request.body.rewind
-      data = JSON.parse request.body.read
-      attributes = {
-        title:    data["post"]["title"],
-        url:      data["post"]["url"],
-      }
-      if attributes.values.all?
-        attributes[:text] = data["text"]
-        status 200
-        content_type :json
-        PostSerializer.new(Post.create(attributes), scope: current_user).to_json
+      if current_user
+        request.body.rewind
+        data = JSON.parse request.body.read
+        attributes = {
+          title:    data["post"]["title"],
+          url:      data["post"]["url"],
+        }
+        if attributes.values.all?
+          attributes[:text] = data["text"]
+          status 200
+          content_type :json
+          post = current_user.posts.create(attributes)
+          PostSerializer.new(post, scope: current_user).to_json
+        else
+          status 409
+        end
       else
-        status 409
+        status 403
+        nil
       end
     end
 
