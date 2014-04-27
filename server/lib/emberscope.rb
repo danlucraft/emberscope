@@ -5,6 +5,8 @@ require 'active_record'
 require 'active_model_serializers'
 require 'rack/cors'
 require 'pbkdf2'
+require 'will_paginate'
+require 'will_paginate/active_record'
 
 require 'emberscope/app'
 require 'emberscope/models/post'

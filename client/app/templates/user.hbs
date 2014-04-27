@@ -3,7 +3,21 @@
 <div class="section">
   <div class="w-container">
 
-    {{model.username}}
+    <h1>
+      {{model.username}}
+    </h1>
+
+    {{#each post in posts}}
+      {{post-entry store=store post=post viewingUser=loggedInUser}}
+    {{/each}}
+
+    {{#if showPrevPageLink}}
+      <a {{action "prevPage"}}>Prev</a>
+    {{/if}}
+    {{posts.content.meta.page}} of {{posts.content.meta.pages}}
+    {{#if showNextPageLink}}
+      <a {{action "nextPage"}}>Next</a>
+    {{/if}}
   </div>
 </div>
 

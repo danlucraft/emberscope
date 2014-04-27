@@ -9,4 +9,5 @@ gem 'rack-cors', :require => 'rack/cors'
 gem "pbkdf2-ruby"
 gem "rake"
 gem "rerun"
+gem "will_paginate"
 

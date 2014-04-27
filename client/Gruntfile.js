@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         src: [
           'assets/js/libs/jquery-2.0.3.min.js',
           'assets/js/libs/handlebars-v1.3.0.js',
-          'assets/js/libs/ember-1.4.0.js',
+          'assets/js/libs/ember-1.5.1.js',
           'assets/js/libs/ember-data-1.0.0-beta.7.js',
           'assets/js/libs/localstorage_adapter.js',
           'assets/js/libs/moment.min.js',

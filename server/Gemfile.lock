@@ -63,6 +63,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    will_paginate (3.0.5)
 
 PLATFORMS
   ruby
@@ -77,3 +78,4 @@ DEPENDENCIES
   rerun
   sinatra
   unicorn
+  will_paginate

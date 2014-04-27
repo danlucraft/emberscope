@@ -19,13 +19,36 @@ module Emberscope
       end
     end
 
+    def add_pagination(data, collection)
+      data["meta"] ||= {}
+      data["meta"]["total"]   = collection.total_entries
+      data["meta"]["page"]    = collection.current_page
+      data["meta"]["perPage"] = collection.per_page
+      data["meta"]["pages"]   = (collection.total_entries.to_f/collection.per_page).ceil
+    end
+
+    POSTS_PER_PAGE = 10
+
     get "/posts" do
-      if posts = Post.all
+      if params[:userId]
+        if user = User.where(uuid: params[:userId]).first
+          status 200
+          content_type :json
+          posts = user.posts.order(:created_at).paginate(page: (params[:page]||1).to_i, per_page: POSTS_PER_PAGE)
+          j = ActiveModel::ArraySerializer.new(posts, root: "posts", scope: current_user).as_json
+          add_pagination(j, posts)
+          j.to_json
+        else
+          status 404
+          nil
+        end
+      elsif posts = Post.all
         status 200
         content_type :json
         ActiveModel::ArraySerializer.new(posts, root: "posts", scope: current_user).to_json
       else
         status 404
+        nil
       end
     end
 
