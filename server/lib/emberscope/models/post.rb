@@ -27,6 +27,7 @@ class PostSerializer < ActiveModel::Serializer
   attribute :exclusive_vote_count, key: :exclusiveVoteCount
   attribute :has_voted, key: :hasVoted
   attribute :user_uuid, key: :user
+  attribute :created_at, key: :createdAt
 
   def exclusive_vote_count
     if scope

@@ -5,7 +5,7 @@ App.Post = DS.Model.extend({
   url:                DS.attr("string"),
   exclusiveVoteCount: DS.attr("number"),
   commentCount:       DS.attr("number"),
-  date:               DS.attr("date"),
+  createdAt:          DS.attr("date"),
   hasVoted:           DS.attr("boolean"),
 
   voteCount: function() {
@@ -23,10 +23,10 @@ App.Post = DS.Model.extend({
   },
 
   domain: function() {
-    return "youtube.com";
+    return URI(this.get("url")).domain();
   }.property("url"),
 
   dateString: function() {
-    return "1000 years ago";
-  }.property("date"),
+    return this.get("createdAt").toRelativeTime();
+  }.property("createdAt"),
 });

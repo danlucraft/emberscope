@@ -32,7 +32,9 @@ module.exports = function(grunt) {
           'assets/js/libs/ember-1.4.0.js',
           'assets/js/libs/ember-data-1.0.0-beta.7.js',
           'assets/js/libs/localstorage_adapter.js',
-          'assets/js/libs/moment.min.js'
+          'assets/js/libs/moment.min.js',
+          'assets/js/libs/date.extensions.js',
+          'assets/js/libs/URI.js',
         ],
         dest: 'assets/js/libs.js'
       },
