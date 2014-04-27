@@ -9,7 +9,7 @@ module Emberscope
       end
     end
 
-    get "/posts/:id" do
+    get "/posts/:uuid" do
       if post = Post.where(uuid: params[:uuid]).first
         status 200
         content_type :json

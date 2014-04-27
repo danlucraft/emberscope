@@ -13,20 +13,24 @@
     </a>
   </div>
 
-  <a class="w-inline-block comments-box" href="#">
+  {{#link-to "post" post classNames="w-inline-block comments-box"}}
     <img class="pic" src="assets/images/1395503154_spechbubble_2.png" width="30">
     <div class="comment-count">{{post.commentCount}}</div>
-  </a>
+  {{/link-to}}
 
   <div class="w-clearfix post-info">
     <a class="post-user" href="#">
       {{post.user.username}}
     </a>
-    <a class="domain" href="#">
+
+    <a class="domain">
       {{post.domain}}
     </a>
+
     <div class="post-date">
-      {{post.dateString}}
+      {{#link-to "post" post}}
+        {{post.dateString}}
+      {{/link-to}}
     </div>
   </div>
 </li>
